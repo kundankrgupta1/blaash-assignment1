@@ -1,5 +1,3 @@
-
-
 const Button = ({ border_color, bg_color, text_color, padding, onClick, icon, text }) => {
 	return (
 		<button

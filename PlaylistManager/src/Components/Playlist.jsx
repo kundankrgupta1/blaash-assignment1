@@ -13,7 +13,6 @@ const Playlist = ({ isLoading, isError }) => {
 			<div className={`bg-[#27272F] w-8/12 rounded-xl p-4 h-[530px] ${isLoading ? "flex justify-center items-center" : ""}`}>
 				{isLoading && <Loading />}
 				{isError && <p>Something went wrong... </p>}
-				{!isLoading && !isError && <p>No Data in Playlist</p>}
 				{!isLoading && !isError &&
 					<div className="grid grid-cols-3 gap-4">
 						{
