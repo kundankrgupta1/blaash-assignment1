@@ -11,9 +11,10 @@ import Button from "./Components/Button";
 
 const App = () => {
 
-	const { playlistData, setPlaylistData, playlistItems, setPlaylistItems } = useContext(ContextProvider);
-	const [isLoading, setIsLoading] = useState(true)
+	const { setPlaylistData } = useContext(ContextProvider);
+	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState(false)
+	const [errorMessage, setErrorMessage] = useState("")
 
 
 	const api_key = "AIzaSyD8L08mVosfY3vQybSsfyBnBEwAklw0JcI"
@@ -36,8 +37,10 @@ const App = () => {
 			console.log(responses)
 			setPlaylistData(responses)
 			setIsLoading(false)
+			setIsError(false)
 		} catch (error) {
 			console.log(error)
+			setErrorMessage(error.message)
 			setIsError(true)
 			setIsLoading(false)
 		}
@@ -65,7 +68,7 @@ const App = () => {
 					/>
 				</div>
 				<div className="flex gap-4 justify-between items-start">
-					<Playlist isLoading={isLoading} isError={isError} />
+					<Playlist fetchData={fetchData} errorMessage={errorMessage} isLoading={isLoading} isError={isError} />
 					<PlaylistOverview />
 				</div>
 				<Login />
